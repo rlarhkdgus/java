@@ -14,11 +14,10 @@ public class Homework2 {
         }
         System.out.println("입력된 학생들의 정보는 다음과 같습니다.");
         for (int i = 0; i < 3; i ++) {
-            String temp = "0" + Integer.toString(students[i].getPhone());
             System.out.printf("%d번째 학생: %d %s %s %s \n",
                     i,students[i].getNumber(),students[i].getName()
-                    , students[i].getMajor(),temp
-                    );
+                    , students[i].getMajor(),students[i].getPhone()
+            );
         }
     }
 }
@@ -50,7 +49,14 @@ class Student {
     public String getMajor() {
         return major;
     }
-    public int getPhone() {
-        return phone;
+    public String getPhone() {
+        StringBuilder sb = new StringBuilder("0");
+        String temp = Integer.toString(phone);
+        sb.append(temp.substring(0,2));
+        sb.append("-");
+        sb.append(temp.substring(2,6));
+        sb.append("-");
+        sb.append(temp.substring(6,10));
+        return sb.toString();
     }
 }
